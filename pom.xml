@@ -30,6 +30,8 @@
         <module>medicine-model</module>
         <module>medicine-util</module>
         <module>medicine-xx1-web</module>
+        <module>medicine-api1</module>
+        <module>medicine-service1</module>
     </modules>
 
     <repositories>
@@ -46,12 +48,11 @@
 
     <dependencyManagement>
 
-
-
         <dependencies>
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring.boot.version}</version>
             </dependency>
 
             <dependency>
@@ -177,9 +178,32 @@
         </profile>
     </profiles>
 
+
+        <!--插件管理-->
     <build>
-        <!--对自定义添加的jar包进行加载-->
         <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>**/*.properties</exclude>
+                    <exclude>**/profiles/</exclude>
+                    <exclude>**/mybatis-generator/</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.yml</include>
+                    <include>**/*.ftl</include>
+                </includes>
+                <excludes>
+                    <exclude>**/profiles/</exclude>
+                    <exclude>**/mybatis-generator/</exclude>
+                </excludes>
+            </resource>
             <resource>
                 <directory>src/main/resources</directory>
                 <targetPath>BOOT-INF/lib/</targetPath>
@@ -188,9 +212,6 @@
                 </includes>
             </resource>
         </resources>
-
-
-        <!--插件管理-->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -211,7 +232,6 @@
                     </excludes>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
