@@ -29,8 +29,11 @@
     <modules>
         <module>medicine-model</module>
         <module>medicine-util</module>
+        <!--web层-->
         <module>medicine-xx1-web</module>
+        <!--接口-->
         <module>medicine-api1</module>
+        <!--接口实现-->
         <module>medicine-service1</module>
     </modules>
 
