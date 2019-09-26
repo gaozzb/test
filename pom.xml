@@ -28,7 +28,7 @@
 
     <modules>
         <module>medicine-model</module>
-        <module>medicine-util</module>
+<!--        <module>medicine-util</module>-->
         <module>medicine-xx1-web</module>
         <module>medicine-api1</module>
         <module>medicine-service1</module>
