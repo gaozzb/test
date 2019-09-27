@@ -8,10 +8,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.medicine</groupId>
-    <artifactId>medicine-service1</artifactId>
+    <artifactId>medicine-serviceImpl</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>medicine-service1</name>
+    <name>medicine-serviceImpl</name>
 
     <properties>
         <java.version>1.8</java.version>
@@ -20,7 +20,7 @@
     <dependencies>
         <dependency>
             <groupId>com.medicine</groupId>
-            <artifactId>medicine-api1</artifactId>
+            <artifactId>medicine-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
@@ -33,7 +33,7 @@
     </dependencies>
 
     <build>
-        <finalName>medicine-service1</finalName>
+        <finalName>medicine-serviceImpl</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <Properties>
+        <!-- 配置日志文件输出目录 -->
+        <Property name="LOG_HOME">/app/tomcat/logs/qapro-web-app</Property>
+        <property name="PATTERN">%d{DEFAULT} [%-5level] [%t] [%logger{36}] [%M]-%L: %msg%xEx%n</property>
+        <property name="DEPARTMENT">usercenter</property>
+        <property name="TEAM">uc.ugc</property>
+        <property name="PROJECT">wenda.pc</property>
+    </Properties>
+
+    <appenders>
+        <RollingRandomAccessFile name="RollingFileError" fileName="${LOG_HOME}/error.log" filePattern="${LOG_HOME}/error/$${date:yyyy-MM}/error-%d{yyyy-MM-dd}-%i.log.gz">
+            <Filters>
+                <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout charset="UTF-8" pattern="${PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <SizeBasedTriggeringPolicy size="200 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="30"/>
+        </RollingRandomAccessFile>
+        <RollingRandomAccessFile name="RollingFileInfo" fileName="${LOG_HOME}/info.log" filePattern="${LOG_HOME}/info/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log.gz">
+            <Filters>
+                <ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout charset="UTF-8" pattern="${PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <SizeBasedTriggeringPolicy size="200 MB" />
+            </Policies>
+            <DefaultRolloverStrategy max="30"/>
+        </RollingRandomAccessFile>
+        <RollingFile name="ProgramRunError" ignoreExceptions="false"
+                     fileName="${LOG_HOME}/report/error.log"
+                     filePattern="${LOG_HOME}/report/error_%d{yyyy-MM-dd}.log">
+            <CsvLayout charset="UTF-8" department="${DEPARTMENT}" team="${TEAM}" project="${PROJECT}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+            </Policies>
+            <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY" />
+        </RollingFile>
+        <RollingFile name="ProgramRunInfo"
+                     fileName="${LOG_HOME}/report/info.log"
+                     filePattern="${LOG_HOME}/report/info/info_%d{yyyy-MM-dd}.log">
+            <CsvLayout charset="UTF-8" department="${DEPARTMENT}" team="${TEAM}" project="${PROJECT}" />
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
+            </Policies>
+            <ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL"/>
+            <ThresholdFilter level="info" onMatch="ACCEPT" onMismatch="DENY"/>
+        </RollingFile>
+
+    </appenders>
+    <loggers>
+        <!--过滤掉spring和hibernate的一些无用的debug信息-->
+        <logger name="org.springframework" level="error" additivity="false"/>
+        <Logger name="org.springframework.web" level="warn" additivity="false"/>
+        <logger name="org.mybatis" level="warn" additivity="false"/>
+        <!--log4j2 自带过滤日志-->
+        <logger name="org.hibernate.validator.internal.util.Version" level="warn" additivity="false"/>
+        <logger name="org.hibernate.validator.internal.util.Version" level="warn" additivity="false"/>
+        <logger name="org.apache.http" level="error" additivity="false"/>
+        <logger name="org.apache.catalina.startup" level="error" additivity="false"/>
+        <logger name="org.apache.catalina.util.LifecycleBase" level="error" additivity="false"/>
+        <logger name="org.apache.coyote.http11.Http11NioProtocol" level="warn" additivity="false"/>
+        <logger name="org.apache.tomcat.util.net.NioSelectorPool" level="warn" additivity="false"/>
+        <logger name="org.springframework.boot" level="warn" additivity="false"/>
+        <logger name="org.springframework.boot.actuate.endpoint.jmx" level="warn" additivity="false"/>
+        <logger name="log4j.logger.org.apache.commons" level="error" additivity="false"/>
+        <logger name="log4j.logger.org.apache.http" level="error" additivity="false"/>
+        <logger name="log4j.logger.freemarker.cache" level="warn" additivity="false"/>
+
+        <!-- 级别顺序（低到高）：ALL < TRACE < DEBUG < INFO < WARN < ERROR < FATAL -->
+        <root level="info">
+            <appender-ref ref="RollingFileError"/>
+            <appender-ref ref="RollingFileInfo"/>
+            <appender-ref ref="ProgramRunError"/>
+            <appender-ref ref="ProgramRunInfo"/>
+        </root>
+    </loggers>
+
+</configuration>

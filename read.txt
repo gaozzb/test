@@ -1,0 +1,2 @@
+用springboot启动时加在VM option 加  -Dlog4j.skipJansi=false
+

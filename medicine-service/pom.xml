@@ -8,9 +8,9 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.medicine</groupId>
-    <artifactId>medicine-api1</artifactId>
+    <artifactId>medicine-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>medicine-api1</name>
+    <name>medicine-service</name>
     <packaging>jar</packaging>
 
 

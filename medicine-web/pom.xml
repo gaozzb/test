@@ -8,10 +8,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <groupId>com.medicine</groupId>
-    <artifactId>medicine-xx1-web</artifactId>
+    <artifactId>medicine-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>medicine-xx1-web</name>
+    <name>medicine-web</name>
 
     <properties>
         <java.version>1.8</java.version>
@@ -33,7 +33,7 @@
 
         <dependency>
             <groupId>com.medicine</groupId>
-            <artifactId>medicine-api1</artifactId>
+            <artifactId>medicine-service</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>
@@ -75,7 +75,7 @@
 
 
     <build>
-        <finalName>medicine-xx1-web</finalName>
+        <finalName>medicine-web</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
