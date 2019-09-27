@@ -1,10 +1,13 @@
 package com.medicine.medicine.servicecImpl;
 
 import com.alibaba.dubbo.config.annotation.Service;
-import com.medicine.medicineapi1.service.TestService;
 import com.medicine.medicine.mapper.TestMapper;
+import com.medicine.medicineService.TestService;
+import com.medicine.medicineutil.CacheUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.concurrent.TimeUnit;
 
 
 @Component
@@ -14,8 +17,12 @@ public class TestServiceImpl implements TestService {
     @Autowired
     private TestMapper testMapper;
 
+    @Autowired
+    CacheUtil cacheUtil;
     @Override
     public String testMethod() {
+
+        cacheUtil.setObjectToRedis("userId","100",10, TimeUnit.MINUTES);
         System.out.println("进到方法来了");
         return "success:" + testMapper.getId();
     }

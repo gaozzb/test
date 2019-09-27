@@ -10,6 +10,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TestMapper {
 
-    //    @Select("select id from member limit 0,1")
     int getId();
 }

@@ -13,5 +13,7 @@
     <name>medicine-service</name>
     <packaging>jar</packaging>
 
-
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
 </project>

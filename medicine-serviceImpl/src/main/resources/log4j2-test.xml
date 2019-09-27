@@ -2,7 +2,7 @@
 <configuration status="WARN" monitorInterval="10" strict="true">
     <Properties>
         <!-- 配置日志文件输出目录 -->
-        <Property name="LOG_HOME">${logAdress}${groupId}</Property>
+        <Property name="LOG_HOME">/log/a.log</Property>
         <property name="PATTERN">%d{DEFAULT} [%-5level] [%t] [%logger{36}] %l: %msg%xEx%n</property>
     </Properties>
 

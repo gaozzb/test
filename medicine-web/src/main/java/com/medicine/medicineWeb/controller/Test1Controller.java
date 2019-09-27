@@ -1,9 +1,7 @@
-package com.medicine.medicineweb.controller;
-
-
-import com.medicine.medicineapi1.service.TestService;
+package com.medicine.medicineWeb.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.medicine.medicineService.TestService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.medicine.medicineweb;
+package com.medicine.medicineWeb;
 
 import com.alibaba.dubbo.spring.boot.annotation.EnableDubboConfiguration;
 import org.springframework.boot.Banner;
@@ -9,15 +9,15 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 
 @SpringBootApplication
 @EnableDubboConfiguration
-public class Xx1WebApplication extends SpringBootServletInitializer {
+public class WebApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
-        SpringApplication.run(Xx1WebApplication.class, args);
+        SpringApplication.run(WebApplication.class, args);
     }
 
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(Xx1WebApplication.class).properties("spring.config.name=application").bannerMode(Banner.Mode.OFF);
+        return builder.sources(WebApplication.class).properties("spring.config.name=application").bannerMode(Banner.Mode.OFF);
     }
 
 

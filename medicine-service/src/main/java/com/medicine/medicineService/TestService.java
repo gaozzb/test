@@ -1,4 +1,4 @@
-package com.medicine.medicineapi1.service;
+package com.medicine.medicineService;
 
 public interface TestService {
 

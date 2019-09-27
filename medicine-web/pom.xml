@@ -83,7 +83,7 @@
                 <version>${spring.boot.version}</version>
                 <configuration>
                     <fork>true</fork><!-- 如果没有该项配置，肯呢个devtools不会起作用，即应用不会restart -->
-                    <mainClass>com.medicine.medicineweb.Xx1WebApplication</mainClass>
+                    <mainClass>com.medicine.medicineWeb.WebApplication</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
                 <executions>
