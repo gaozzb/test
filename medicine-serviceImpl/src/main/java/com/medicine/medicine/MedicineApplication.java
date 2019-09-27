@@ -6,10 +6,12 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
+@EnableConfigurationProperties
 @EnableDubboConfiguration
-@SpringBootApplication
-@MapperScan("com.medicine.medicine.mapper")
+@SpringBootApplication(scanBasePackages = "com.medicine")
+@MapperScan("com.medicine")
 public class MedicineApplication {
 
     public static void main(String[] args) {

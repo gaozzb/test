@@ -156,8 +156,8 @@
             <id>dev</id>
             <properties>
                 <env>dev</env>
-                <log4j2.config>log4j2-test.xml</log4j2.config>
-                <logAdress>D:\logs\</logAdress>
+<!--                <log4j2.config>log4j2-test.xml</log4j2.config>-->
+<!--                <logAdress>D:\logs\</logAdress>-->
             </properties>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -167,8 +167,8 @@
             <id>prod</id>
             <properties>
                 <env>prod</env>
-                <log4j2.config>log4j2.xml</log4j2.config>
-                <logAdress>/app/tomcat/logs/</logAdress>
+<!--                <log4j2.config>log4j2.xml</log4j2.config>-->
+<!--                <logAdress>/app/tomcat/logs/</logAdress>-->
             </properties>
         </profile>
     </profiles>
