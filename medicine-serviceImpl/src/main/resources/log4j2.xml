@@ -2,11 +2,11 @@
 <configuration>
     <Properties>
         <!-- 配置日志文件输出目录 -->
-        <Property name="LOG_HOME">/app/tomcat/logs/qapro-web-api</Property>
+        <Property name="LOG_HOME">/app/tomcat/logs/medicine-serviceImpl</Property>
         <property name="PATTERN">%d{DEFAULT} [%-5level] [%t] [%logger{36}] [%M]-%L: %msg%xEx%n</property>
         <property name="DEPARTMENT">usercenter</property>
         <property name="TEAM">uc.ugc</property>
-        <property name="PROJECT">wenda.api</property>
+        <property name="PROJECT">medicine-serviceImpl</property>
     </Properties>
 
     <appenders>

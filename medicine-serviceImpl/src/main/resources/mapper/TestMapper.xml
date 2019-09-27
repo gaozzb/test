@@ -4,7 +4,7 @@
 
     <select id="getId" resultType="java.lang.Integer">
 
-        select id from member limit 0,1
+        select memberId from member limit 0,1
 
     </select>
 </mapper>

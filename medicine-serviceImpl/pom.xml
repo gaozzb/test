@@ -32,7 +32,6 @@
         </dependency>
 
     </dependencies>
-
     <build>
         <finalName>medicine-serviceImpl</finalName>
         <plugins>
@@ -43,8 +42,7 @@
             </plugin>
         </plugins>
         <filters>
-            <filter>src/main/resources/profiles/${env}.application.properties</filter>
+            <filter>src/main/resources/application-${env}.properties</filter>
         </filters>
     </build>
-
 </project>
