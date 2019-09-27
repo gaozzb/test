@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="WARN" monitorInterval="10" strict="true">
+    <Properties>
+        <!-- 配置日志文件输出目录 -->
+        <Property name="LOG_HOME">${logAdress}${groupId}</Property>
+        <property name="PATTERN">%d{DEFAULT} [%-5level] [%t] [%logger{36}] %l: %msg%xEx%n</property>
+    </Properties>
+
+    <appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout
+                    pattern="%highlight{[%d{HH:mm:ss.SSS}] [%-5level] [%t] %class{36} %l - %msg%xEx%n}{FATAL=bg_red, ERROR=red, WARN=yellow, INFO=green, DEBUG=cyan,TRACE=blue}"/>
+        </Console>
+
+        <RollingRandomAccessFile name="RollingFileDebug" immediateFlush="false" fileName="${LOG_HOME}/debug.log"
+                                 filePattern="${LOG_HOME}/info/$${date:yyyy-MM}/debug-%d{yyyy-MM-dd}-%i.log.gz">
+            <Filters>
+                <!-- 首先需要过滤不符合的日志级别，把不需要的首先 DENY 掉，然后在 ACCEPT 需要的日志级别，次序不能颠倒 -->
+                <ThresholdFilter level="INFO" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="${PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <SizeBasedTriggeringPolicy size="200 MB"/>
+            </Policies>
+        </RollingRandomAccessFile>
+
+        <RollingRandomAccessFile name="RollingFileInfo" immediateFlush="false" fileName="${LOG_HOME}/info.log"
+                                 filePattern="${LOG_HOME}/info/$${date:yyyy-MM}/info-%d{yyyy-MM-dd}-%i.log.gz">
+            <Filters>
+                <!-- 首先需要过滤不符合的日志级别，把不需要的首先 DENY 掉，然后在 ACCEPT 需要的日志级别，次序不能颠倒 -->
+                <ThresholdFilter level="WARN" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="${PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <SizeBasedTriggeringPolicy size="200 MB"/>
+            </Policies>
+        </RollingRandomAccessFile>
+
+        <RollingRandomAccessFile name="RollingFileWarn" immediateFlush="false" fileName="${LOG_HOME}/warn.log"
+                                 filePattern="${LOG_HOME}/warn/$${date:yyyy-MM}/warn-%d{yyyy-MM-dd}-%i.log.gz">
+            <Filters>
+                <!-- 首先需要过滤不符合的日志级别，把不需要的首先 DENY 掉，然后在 ACCEPT 需要的日志级别，次序不能颠倒 -->
+                <ThresholdFilter level="ERROR" onMatch="DENY" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="${PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <SizeBasedTriggeringPolicy size="200 MB"/>
+            </Policies>
+        </RollingRandomAccessFile>
+
+        <RollingRandomAccessFile name="RollingFileError" immediateFlush="false" fileName="${LOG_HOME}/error.log"
+                                 filePattern="${LOG_HOME}/error/$${date:yyyy-MM}/error-%d{yyyy-MM-dd}-%i.log.gz">
+            <Filters>
+                <ThresholdFilter level="ERROR" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="${PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy modulate="true" interval="1"/>
+                <SizeBasedTriggeringPolicy size="200 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="30"/>
+        </RollingRandomAccessFile>
+    </appenders>
+
+    <loggers>
+        <!--记录druid-sql的记录-->
+        <logger name="druid.sql.Statement" level="error" additivity="false">
+            <appender-ref ref="Console"/>
+        </logger>
+        <logger name="druid.sql.ResultSet" level="error" additivity="false">
+            <appender-ref ref="Console"/>
+        </logger>
+        <!--过滤掉spring和hibernate的一些无用的debug信息-->
+        <logger name="org.springframework" level="error" additivity="false"/>
+        <Logger name="org.springframework.web" level="warn" additivity="false"/>
+        <logger name="org.mybatis" level="warn" additivity="false"/>
+        <!--log4j2 自带过滤日志-->
+        <logger name="org.hibernate.validator.internal.util.Version" level="warn" additivity="false"/>
+        <logger name="org.hibernate.validator.internal.util.Version" level="warn" additivity="false"/>
+        <logger name="org.apache.http" level="error" additivity="false"/>
+        <logger name="org.apache.catalina.startup" level="error" additivity="false"/>
+        <logger name="org.apache.catalina.util.LifecycleBase" level="error" additivity="false"/>
+        <logger name="org.apache.coyote.http11.Http11NioProtocol" level="warn" additivity="false"/>
+        <logger name="org.apache.tomcat.util.net.NioSelectorPool" level="warn" additivity="false"/>
+        <logger name="org.springframework.boot" level="warn" additivity="false"/>
+        <logger name="org.springframework.boot.actuate.endpoint.jmx" level="warn" additivity="false"/>
+        <logger name="log4j.logger.org.apache.commons" level="error" additivity="false"/>
+        <logger name="log4j.logger.org.apache.http" level="error" additivity="false"/>
+        <logger name="log4j.logger.freemarker.cache" level="info" additivity="false"/>
+
+        <!-- 级别顺序（低到高）：ALL < TRACE < DEBUG < INFO < WARN < ERROR < FATAL -->
+        <root level="DEBUG" includeLocation="true">
+            <appender-ref ref="Console"/>
+            <appender-ref ref="RollingFileDebug"/>
+            <appender-ref ref="RollingFileInfo"/>
+            <appender-ref ref="RollingFileWarn"/>
+            <appender-ref ref="RollingFileError"/>
+        </root>
+    </loggers>
+
+</configuration>

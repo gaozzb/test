@@ -92,8 +92,7 @@ atlassian-ide-plugin.xml
 
 /aibot-data/*.iml
 /aibot-model/*.iml
-aibot-web-base/src/main/java/com/autohome/aibot/webbase/filter/
-aibot-web-base/src/main/java/com/autohome/aibot/webbase/version/
 
-*.iml
-/qapro-web-app/src/main/java/com/autohome/qapro/web/rocketmq
+**/*.iml
+
+
