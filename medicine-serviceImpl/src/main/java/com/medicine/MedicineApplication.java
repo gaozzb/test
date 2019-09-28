@@ -15,6 +15,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 public class MedicineApplication {
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder(MedicineApplication.class).properties("spring.config.name=application").bannerMode(Banner.Mode.OFF).run(args);
+        new SpringApplicationBuilder(MedicineApplication.class).properties("spring.config.name=application,db").bannerMode(Banner.Mode.OFF).run(args);
     }
 }

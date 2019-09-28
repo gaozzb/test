@@ -182,6 +182,7 @@
                 <filtering>false</filtering>
                 <excludes>
                     <exclude>**/*.properties</exclude>
+                    <exclude>**/*.yml</exclude>
                 </excludes>
             </resource>
             <resource>
@@ -190,7 +191,7 @@
                 <includes>
                     <include>**/application.properties</include>
                     <include>**/application-${env}.properties</include>
-                    <include>**/*.yml</include>
+                    <include>**/application-${env}.yml</include>
                 </includes>
             </resource>
             <resource>

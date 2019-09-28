@@ -4,8 +4,8 @@
         <!-- 配置日志文件输出目录 -->
         <Property name="LOG_HOME">/app/tomcat/logs/medicine-serviceImpl</Property>
         <property name="PATTERN">%d{DEFAULT} [%-5level] [%t] [%logger{36}] [%M]-%L: %msg%xEx%n</property>
-        <property name="DEPARTMENT">usercenter</property>
-        <property name="TEAM">uc.ugc</property>
+        <property name="DEPARTMENT">dbn</property>
+        <property name="TEAM">dbn</property>
         <property name="PROJECT">medicine-serviceImpl</property>
     </Properties>
 

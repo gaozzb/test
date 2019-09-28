@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
 import com.baomidou.mybatisplus.annotations.TableName;
 import com.baomidou.mybatisplus.enums.IdType;
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -15,6 +17,7 @@ import java.io.Serializable;
  * @author zaolaotou
  * @since 2019-09-28
  */
+@Data
 @TableName("illness_info")
 public class IllnessInfo implements Serializable {
 
@@ -33,8 +36,8 @@ public class IllnessInfo implements Serializable {
     /**
      * 开始症状
      */
-    @TableField("begin_symptoms")
-    private String beginSymptoms;
+    @TableField("begin_symptom")
+    private String beginSymptom;
     /**
      * 诱发原因
      */
@@ -77,6 +80,10 @@ public class IllnessInfo implements Serializable {
     private String analgesicTime;
 
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -93,12 +100,12 @@ public class IllnessInfo implements Serializable {
         this.diseaseTime = diseaseTime;
     }
 
-    public String getBeginSymptoms() {
-        return beginSymptoms;
+    public String getBeginSymptom() {
+        return beginSymptom;
     }
 
-    public void setBeginSymptoms(String beginSymptoms) {
-        this.beginSymptoms = beginSymptoms;
+    public void setBeginSymptom(String beginSymptom) {
+        this.beginSymptom = beginSymptom;
     }
 
     public String getInduceCause() {
@@ -163,22 +170,5 @@ public class IllnessInfo implements Serializable {
 
     public void setAnalgesicTime(String analgesicTime) {
         this.analgesicTime = analgesicTime;
-    }
-
-    @Override
-    public String toString() {
-        return "IllnessInfo{" +
-        ", id=" + id +
-        ", diseaseTime=" + diseaseTime +
-        ", beginSymptoms=" + beginSymptoms +
-        ", induceCause=" + induceCause +
-        ", oldDepartment=" + oldDepartment +
-        ", antiviralDrugs=" + antiviralDrugs +
-        ", antiviralTime=" + antiviralTime +
-        ", neurotrophicDrugs=" + neurotrophicDrugs +
-        ", neurotrophicTime=" + neurotrophicTime +
-        ", analgesicDrugs=" + analgesicDrugs +
-        ", analgesicTime=" + analgesicTime +
-        "}";
     }
 }

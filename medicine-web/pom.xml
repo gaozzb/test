@@ -109,6 +109,4 @@
             <filter>src/main/resources/application-${env}.properties</filter>
         </filters>
     </build>
-
-
 </project>
