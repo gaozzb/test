@@ -1,4 +1,4 @@
-package com.medicine.medicine;
+package com.medicine;
 
 
 import com.alibaba.dubbo.spring.boot.annotation.EnableDubboConfiguration;

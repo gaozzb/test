@@ -1,4 +1,4 @@
-package com.medicine.medicinebase.config;
+package com.medicine.baseconfig;
 
 public interface CachedConfigurer {
 

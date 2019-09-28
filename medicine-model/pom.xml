@@ -31,6 +31,12 @@
             <artifactId>lombok</artifactId>
             <version>1.18.8</version>
         </dependency>
+        <!--mybatis-Plus-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus</artifactId>
+            <version>2.3</version>
+        </dependency>
     </dependencies>
 
 

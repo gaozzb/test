@@ -1,25 +1,18 @@
-package com.medicine.medicine.dbConfig;
+package com.medicine;//package com.medicine.baseconfig;
 
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.type.TypeHandlerRegistry;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
-import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
 
 import javax.sql.DataSource;
-
-import java.io.IOException;
-
-import static org.springframework.core.io.support.PathMatchingResourcePatternResolver.*;
 
 @Configuration
 //加上这个注解，使得支持事务
@@ -41,7 +34,7 @@ public class MyBatisConfig implements TransactionManagementConfigurer {
         //bean.setConfiguration(new org.apache.ibatis.session.Configuration( ).set);
         bean.setTypeAliasesPackage("com.medicine.model");
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        String packageSearchPath = PathMatchingResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX + "/mapper/*.xml";
+        String packageSearchPath = PathMatchingResourcePatternResolver.CLASSPATH_ALL_URL_PREFIX + "*/mapper/*.xml";
         bean.setMapperLocations(resolver.getResources(packageSearchPath));
         //bean.setTypeHandlersPackage("cn.classify.enums");
 //        // 取得类型转换注册器

@@ -1,4 +1,4 @@
-package com.medicine.medicine.mapper;
+package com.medicine.mapper;
 
 import org.springframework.stereotype.Repository;
 

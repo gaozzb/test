@@ -1,4 +1,4 @@
-package com.medicine.medicinebase.config;
+package com.medicine.baseconfig;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.medicine.mapper.IllnessInfoMapper">
+
+    <!-- 开启二级缓存 -->
+    <!--<cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>-->
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.medicine.model.IllnessInfo">
+        <id column="id" property="id" />
+        <result column="disease_time" property="diseaseTime" />
+        <result column="begin_symptoms" property="beginSymptoms" />
+        <result column="induce_cause" property="induceCause" />
+        <result column="old_department" property="oldDepartment" />
+        <result column="antiviral_drugs" property="antiviralDrugs" />
+        <result column="antiviral_time" property="antiviralTime" />
+        <result column="neurotrophic_drugs" property="neurotrophicDrugs" />
+        <result column="neurotrophic_time" property="neurotrophicTime" />
+        <result column="analgesic_drugs" property="analgesicDrugs" />
+        <result column="analgesic_time" property="analgesicTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, disease_time, begin_symptoms, induce_cause, old_department, antiviral_drugs, antiviral_time, neurotrophic_drugs, neurotrophic_time, analgesic_drugs, analgesic_time
+    </sql>
+
+</mapper>

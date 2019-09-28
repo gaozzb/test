@@ -1,4 +1,4 @@
-package com.medicine.medicine.dbConfig;
+package com.medicine.baseconfig;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.springframework.boot.context.properties.ConfigurationProperties;
